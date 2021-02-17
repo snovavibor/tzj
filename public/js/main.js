@@ -41,7 +41,8 @@ $(document).ready(function () {
       .find("input")
       .each(function () {
         if (this.type !== "checkbox") {
-          if (typeRules(this.type, this.value)) {
+          //if (typeRules(this.type, this.value)) {
+          if (is_rules(this.type, this.value)) {
             errorArr.push(true);
           } else {
             errorArr.push(false);
@@ -60,51 +61,22 @@ $(document).ready(function () {
 
     let typeEl = this.type;
 
-    if (typeRules(typeEl, letter)) {
-      $(this).css({ borderColor: "green" });
-    } else {
-      $(this).css({ borderColor: "red" });
+    if (typeEl !== "checkbox") {
+      if (is_rules(typeEl, letter)) {
+        $(this).css({ borderColor: "green" });
+      } else {
+        $(this).css({ borderColor: "red" });
+      }
     }
   });
 
-  /**
-   * В зависимости от типа поля вызываются соответствующие правила для
-   * для проверки введенного символа
-   *
-   * @param {string} type
-   * @param {string} letter
-   */
-  function typeRules(type, letter) {
-    switch (type) {
-      case "text":
-        return rulesText(letter);
-        break;
-      case "email":
-        return rulesEmail(letter);
-        break;
-      case "password":
-        return rulesPassword(letter);
-        break;
-    }
-  }
+  function is_rules(ruleName, leters) {
+    var rules = {
+      text: /^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/g,
+      password: /^([0-9a-zA-Zа-яА-я-_]){8,16}$/g,
+      email: /.+@.+\..+/g,
+    };
 
-  /**
-   * правила для полей формы
-   *
-   * @param {string} letter
-   */
-  function rulesText(letter) {
-    let preg = /^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/g;
-    return preg.test(letter);
-  }
-
-  function rulesPassword(letter) {
-    let preg = /^([0-9a-zA-Zа-яА-я-_]){8,16}$/g;
-    return preg.test(letter);
-  }
-
-  function rulesEmail(letter) {
-    let preg = /.+@.+\..+/g;
-    return preg.test(letter);
+    return rules[ruleName].test(leters);
   }
 });
