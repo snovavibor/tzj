@@ -1,6 +1,0 @@
-app/.htaccess
-public/images/*
-public/fonts/*
-
-public/.htaccess
-.gitignore
