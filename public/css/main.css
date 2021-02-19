@@ -33,6 +33,8 @@ body {
 .container {
   width: 100%;
   padding: 0 5px 0 5px;
+ 
+  
 }
 
 .w-100 {
@@ -49,11 +51,14 @@ body {
 }
 
 
-/* .wrap {
-  width: 1114px;
+.wrap {
+  width: 100%;
   margin: 0 auto;
-  background: url(../images/Group\ 2.png)no-repeat content-box;
-} */
+  background-image: url(../images/back.png);
+  background-repeat: repeat-y;
+  background-size: 100%;
+  background-position-y: 23%; 
+}
 /* 
 **************************************** top- block ********************************
 */
@@ -307,6 +312,14 @@ button:hover {
 }
 
 @media screen and (min-width: 850px) {
+  
+  .wrap {
+     width: 1114px;
+    margin: 0 auto; 
+     background-image: url(../images/back.png);
+    background-size: 100%; 
+    background-position-y: 125%;
+  }
   .container {
     width: 827px;
     margin: 0 auto;

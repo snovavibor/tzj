@@ -56,11 +56,19 @@ $(document).ready(function () {
       }
     }
 
+    // function sortByAge(arr) {
+    //   arr.sort((a, b) =>
+    //     a.sumTotal > b.sumTotal && a.countsOnePac > 0 ? 1 : -1
+    //   );
+    // }
+
+    //применять такой вид сортировки из за того что js Chrome
+    // использует нестабильный вид сортировки  и искажает результат.
     function sortByAge(arr) {
-      arr.sort((a, b) =>
-        a.sumTotal > b.sumTotal && a.countsOnePac > 0 ? 1 : -1
-      );
-    }
+    
+      arr.sort(function(a, b) { return a.sumTotal < b.sumTotal ? -1 : (a.sumTotal > b.sumTotal ? 1 : 0); });
+  }
+
 
     function res(flag, countCover, pacOne, pacTwo) {
       if (flag < 0) {
