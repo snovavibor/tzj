@@ -39,7 +39,7 @@ $(document).ready(function () {
 
     //применять такой вид сортировки из за того что js Chrome
     // использует нестабильный вид сортировки  и искажает результат.
-    function sortByAge(arr) {
+    function sortByMinSum(arr) {
       arr.sort(function (a, b) {
         return a.sumTotal < b.sumTotal ? -1 : a.sumTotal > b.sumTotal ? 1 : 0;
       });
@@ -63,7 +63,7 @@ $(document).ready(function () {
 
         return;
       }
-      
+
       var info = [];
       
       f = 0;
@@ -79,7 +79,7 @@ $(document).ready(function () {
         }
       }
 
-      sortByAge(info);
+      sortByMinSum(info);
 
       alert(
         "You will need " +
